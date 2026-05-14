@@ -1,0 +1,3 @@
+# protect-translation
+
+上手くGoogle翻訳できない英語節等を無意味文字列化して多少マシな翻訳にする拡張機能
