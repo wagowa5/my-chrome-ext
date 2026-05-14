@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Google Translate Token Protector",
+  "version": "0.5.0",
+  "description": "Protects inline code and list-like English expressions from Google Translate using temporary tokens.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
+
