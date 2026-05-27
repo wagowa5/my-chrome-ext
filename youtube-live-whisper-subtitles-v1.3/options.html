@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>YouTube Live Whisper JP Subtitles Options</title>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 760px; margin: 32px auto; padding: 0 18px; color: #171717; }
+    h1 { font-size: 24px; }
+    label { display: block; margin-top: 18px; font-weight: 700; }
+    input, select { width: 100%; box-sizing: border-box; padding: 10px; margin-top: 6px; border: 1px solid #ccc; border-radius: 10px; font-size: 14px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .check { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+    .check input { width: auto; }
+    button { margin-top: 22px; padding: 10px 16px; border: 0; border-radius: 10px; background: #111; color: #fff; font-weight: 700; cursor: pointer; }
+    #status { margin-left: 12px; color: #097a38; }
+    p { line-height: 1.7; color: #444; }
+    code { background: #f3f3f3; padding: 2px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>YouTube Live Whisper JP Subtitles</h1>
+  <p>OpenAI APIキーを保存してから、YouTube Liveのタブで拡張アイコンを押してください。</p>
+
+  <label for="openaiApiKey">OpenAI API Key</label>
+  <input id="openaiApiKey" type="password" placeholder="sk-... / sk-proj-...">
+  <label class="check"><input id="reveal" type="checkbox"> APIキーを表示する</label>
+  <p><strong>保存状態:</strong> <span id="savedState">確認中...</span></p>
+
+  <div class="row">
+    <div>
+      <label for="chunkMs">音声チャンク間隔</label>
+      <select id="chunkMs">
+        <option value="2000">2秒: 英語表示最優先・精度低め</option>
+        <option value="3000">3秒: 低遅延おすすめ</option>
+        <option value="5000">5秒: 安定</option>
+        <option value="8000">8秒: 精度優先</option>
+      </select>
+    </div>
+    <div>
+      <label for="transcriptionModel">音声認識モデル</label>
+      <input id="transcriptionModel" value="whisper-1">
+    </div>
+  </div>
+
+  <label for="translationModel">翻訳モデル</label>
+  <input id="translationModel" value="gpt-4o-mini">
+
+  <label class="check">
+    <input id="showSourceText" type="checkbox">
+    英語の文字起こしを常に表示する（v1.1では英語先行表示）
+  </label>
+
+  <button id="save">保存</button><span id="status"></span>
+
+  <p>注意: YouTubeの音声がOpenAI APIに送信されます。個人利用・検証用途として使ってください。</p>
+
+  <script src="options.js"></script>
+</body>
+</html>
